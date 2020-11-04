@@ -4,7 +4,7 @@ const Engine = Matter.Engine;
 const World = Matter.World;
 const Bodies = Matter.Bodies;
 const Body = Matter.Body;
-const Render = Matter.Render;
+
 function preload()
 {
 	helicopterIMG=loadImage("helicopter.png")
@@ -31,7 +31,7 @@ function setup() {
 	engine = Engine.create();
 	world = engine.world;
 
-	packageBody = Bodies.circle(width/2 , 200 , 5 , {restitution:1.5, isStatic:false});
+	packageBody = Bodies.circle(width/2 , 200 , 5 , {restitution:0.3, isStatic:true});
 	World.add(world, packageBody);
 	
 
@@ -56,7 +56,8 @@ function draw() {
 
 function keyPressed() {
  if (keyCode === DOWN_ARROW) {
-    Matter.Body.setStatic(packageBody,false);
+	// Look at the hints in the document and understand how to make the package body fall only on
+	Matter.Body.setStatic(packageBody,false);
     
   }
 }
